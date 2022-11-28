@@ -1,0 +1,1 @@
+Game of Mancala, proiect la Python de tip A.
