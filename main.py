@@ -19,10 +19,13 @@ BOARD_IMG = pygame.image.load(os.path.join("Images", "board.png")).convert_alpha
 BOARD_IMG_WIDTH, BOARD_IMG_HEIGHT = BOARD_IMG.get_width(), BOARD_IMG.get_height()
 BOARD_IMG_X, BOARD_IMG_Y = 0, WINDOW_HEIGHT / 2 - BOARD_IMG.get_height() / 2 - 10 + NEXT_TURN_IMG.get_height()
 
-CUP_SCORE_IMG_WIDTH, CUP_SCORE_IMG_HEIGHT = 50, 50
+SCORE_IMG_WIDTH, SCORE_IMG_HEIGHT = 100, 50
 CUP_SCORE_IMG = pygame.transform.scale(
     pygame.image.load(os.path.join("Images", "cup_score.png")).convert_alpha(WINDOW),
-    (CUP_SCORE_IMG_WIDTH, CUP_SCORE_IMG_HEIGHT))
+    (SCORE_IMG_WIDTH, SCORE_IMG_HEIGHT))
+TOTAL_SCORE_IMG = pygame.transform.scale(
+    pygame.image.load(os.path.join("Images", "total_score.png")).convert_alpha(WINDOW),
+    (SCORE_IMG_WIDTH, SCORE_IMG_HEIGHT))
 
 FPS = 60
 
@@ -52,27 +55,33 @@ def place_cups_and_stores():
                     BOARD_IMG.blit(store_img, 
                         (STORE_IMG_WIDTH * column_index + STORE_IMG_WIDTH / 5, 
                         BOARD_IMG_HEIGHT / 2 - STORE_IMG_HEIGHT / 2))
+                    WINDOW.blit(TOTAL_SCORE_IMG, 
+                    (CUP_IMG_WIDTH * column_index + CUP_IMG_WIDTH / 2 + CUP_IMG_WIDTH / 5 * (column_index - 1) + 10, 
+                    BOARD_IMG_Y - SCORE_IMG_HEIGHT))
                 elif column_index == 7:
                     store_img = load_store_image(row_index, column_index)
                     BOARD_IMG.blit(store_img, 
                         (STORE_IMG_WIDTH * (column_index + 1) + STORE_IMG_WIDTH / 2 + STORE_IMG_WIDTH / 5, 
                         BOARD_IMG_HEIGHT / 2 - STORE_IMG_HEIGHT / 2))
+                    WINDOW.blit(TOTAL_SCORE_IMG, 
+                    (CUP_IMG_WIDTH * column_index + CUP_IMG_WIDTH / 2 + CUP_IMG_WIDTH / 5 * (column_index - 1) + 10, 
+                    BOARD_IMG_HEIGHT + BOARD_IMG_Y))
                 else:
                     cup_img = load_cup_image(row_index, column_index)
                     BOARD_IMG.blit(cup_img, 
                         (CUP_IMG_WIDTH * column_index + CUP_IMG_WIDTH / 2 + STORE_IMG_WIDTH / 5 * (column_index - 1), 
                         BOARD_IMG_HEIGHT / 2 - CUP_IMG_HEIGHT - CUP_IMG_HEIGHT / 6))
-                    BOARD_IMG.blit(CUP_SCORE_IMG, 
-                    (CUP_IMG_WIDTH * column_index + CUP_IMG_WIDTH / 2 + STORE_IMG_WIDTH / 5 * (column_index - 1), 
-                    -CUP_IMG_HEIGHT))
+                    WINDOW.blit(CUP_SCORE_IMG, 
+                    (CUP_IMG_WIDTH * column_index + CUP_IMG_WIDTH / 2 + CUP_IMG_WIDTH / 5 * (column_index - 1) + 10, 
+                    BOARD_IMG_Y - SCORE_IMG_HEIGHT))
             else:
                 cup_img = load_cup_image(row_index, column_index)
                 BOARD_IMG.blit(cup_img, 
                     (CUP_IMG_WIDTH * column_index + CUP_IMG_WIDTH / 2 + STORE_IMG_WIDTH / 5 * (column_index - 1), 
                     BOARD_IMG_HEIGHT / 2 + CUP_IMG_HEIGHT / 6))
-                BOARD_IMG.blit(CUP_SCORE_IMG, 
-                    (CUP_IMG_WIDTH * column_index + CUP_IMG_WIDTH / 2 + STORE_IMG_WIDTH / 5 * (column_index - 1), 
-                    BOARD_IMG_HEIGHT *2  + CUP_SCORE_IMG_HEIGHT))
+                WINDOW.blit(CUP_SCORE_IMG, 
+                    (CUP_IMG_WIDTH * column_index + CUP_IMG_WIDTH / 2 + CUP_IMG_WIDTH / 5 * (column_index - 1) + 10, 
+                    BOARD_IMG_HEIGHT + BOARD_IMG_Y))
 
 def draw_board():
     WINDOW.blit(BACKGROUND_IMG, (0, 0))
@@ -102,10 +111,6 @@ def main():
     pygame.quit()
 
 if __name__ == "__main__":
-    my_input = input("Enter 'computer' or 'player' to choose your type of opponent: ")
-    validate_args(my_input)
+    # my_input = input("Enter 'computer' or 'player' to choose your type of opponent: ")
+    # validate_args(my_input)
     main()
-
-# castigatorul trebuie afisat ca output in consola sau trebuie sa fie afisat in fereastra cu jocul
-# e ok sa folosesc pygame
-# e ok sa lucrez numai cu imagini?
