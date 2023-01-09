@@ -108,7 +108,7 @@ def get_next_position(row_index, column_index):
         else:
             return (1, column_index + 1)
 
-def move_stone(row, col, turn):
+def move_stone(row, column, turn):
     '''
     updates the coordinates in stones_positions_list in
     order to execute the move
@@ -116,46 +116,46 @@ def move_stone(row, col, turn):
     '''
 
     repeat_turn = 0
-    new_row, new_col = row, col
-    while (len(stones_positions_list[row][col])) > 0:
-        (new_row, new_col) = get_next_position(new_row, new_col)
-        if new_row == 0 and new_col == 0:
+    new_row, new_column = row, column
+    while (len(stones_positions_list[row][column])) > 0:
+        (new_row, new_column) = get_next_position(new_row, new_column)
+        if new_row == 0 and new_column == 0:
             if turn == 0:
-                if (len(stones_positions_list[row][col])) == 1:
+                if (len(stones_positions_list[row][column])) == 1:
                     repeat_turn = 1
                 
-                img_x = random.randint(int(init.CUP_IMG_X_POS_LIST[new_row][new_col] + 30), 
-                                        int(init.CUP_IMG_X_POS_LIST[new_row][new_col] + init.CUP_IMG_WIDTH - 60))
-                img_y = random.randint(int(init.CUP_IMG_Y_POS_LIST[new_row][new_col] + 20), 
-                                    int(init.CUP_IMG_Y_POS_LIST[new_row][new_col] + init.CUP_IMG_HEIGHT - 40))
+                img_x = random.randint(int(init.CUP_IMG_X_POS_LIST[new_row][new_column] + 30), 
+                                        int(init.CUP_IMG_X_POS_LIST[new_row][new_column] + init.CUP_IMG_WIDTH - 60))
+                img_y = random.randint(int(init.CUP_IMG_Y_POS_LIST[new_row][new_column] + 20), 
+                                    int(init.CUP_IMG_Y_POS_LIST[new_row][new_column] + init.CUP_IMG_HEIGHT - 40))
 
-                stones_positions_list[row][col][0] =  (img_x, img_y)               
-                stones_positions_list[new_row][new_col].append(stones_positions_list[row][col][0])
-                stones_positions_list[row][col].pop(0)
+                stones_positions_list[row][column][0] = (img_x, img_y)               
+                stones_positions_list[new_row][new_column].append(stones_positions_list[row][column][0])
+                stones_positions_list[row][column].pop(0)
 
-        elif new_row == 1 and new_col == 6:
+        elif new_row == 1 and new_column == 6:
             if turn == 1:
-                if (len(stones_positions_list[row][col])) == 1:
+                if (len(stones_positions_list[row][column])) == 1:
                     repeat_turn = 1
                 
-                img_x = random.randint(int(init.CUP_IMG_X_POS_LIST[new_row][new_col] + 30), 
-                                        int(init.CUP_IMG_X_POS_LIST[new_row][new_col] + init.CUP_IMG_WIDTH - 60))
-                img_y = random.randint(int(init.CUP_IMG_Y_POS_LIST[new_row][new_col] + 20), 
-                                    int(init.CUP_IMG_Y_POS_LIST[new_row][new_col] + init.CUP_IMG_HEIGHT - 40))
+                img_x = random.randint(int(init.CUP_IMG_X_POS_LIST[new_row][new_column] + 30), 
+                                        int(init.CUP_IMG_X_POS_LIST[new_row][new_column] + init.CUP_IMG_WIDTH - 60))
+                img_y = random.randint(int(init.CUP_IMG_Y_POS_LIST[new_row][new_column] + 20), 
+                                    int(init.CUP_IMG_Y_POS_LIST[new_row][new_column] + init.CUP_IMG_HEIGHT - 40))
 
-                stones_positions_list[row][col][0] =  (img_x, img_y)               
-                stones_positions_list[new_row][new_col].append(stones_positions_list[row][col][0])
-                stones_positions_list[row][col].pop(0)
+                stones_positions_list[row][column][0] = (img_x, img_y)               
+                stones_positions_list[new_row][new_column].append(stones_positions_list[row][column][0])
+                stones_positions_list[row][column].pop(0)
 
         else:
-            img_x = random.randint(int(init.CUP_IMG_X_POS_LIST[new_row][new_col] + 30), 
-                                    int(init.CUP_IMG_X_POS_LIST[new_row][new_col] + init.CUP_IMG_WIDTH - 60))
-            img_y = random.randint(int(init.CUP_IMG_Y_POS_LIST[new_row][new_col] + 20), 
-                                int(init.CUP_IMG_Y_POS_LIST[new_row][new_col] + init.CUP_IMG_HEIGHT - 40))
+            img_x = random.randint(int(init.CUP_IMG_X_POS_LIST[new_row][new_column] + 30), 
+                                    int(init.CUP_IMG_X_POS_LIST[new_row][new_column] + init.CUP_IMG_WIDTH - 60))
+            img_y = random.randint(int(init.CUP_IMG_Y_POS_LIST[new_row][new_column] + 20), 
+                                int(init.CUP_IMG_Y_POS_LIST[new_row][new_column] + init.CUP_IMG_HEIGHT - 40))
 
-            stones_positions_list[row][col][0] =  (img_x, img_y)               
-            stones_positions_list[new_row][new_col].append(stones_positions_list[row][col][0])
-            stones_positions_list[row][col].pop(0)
+            stones_positions_list[row][column][0] = (img_x, img_y)               
+            stones_positions_list[new_row][new_column].append(stones_positions_list[row][column][0])
+            stones_positions_list[row][column].pop(0)
 
     return repeat_turn
 
