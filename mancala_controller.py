@@ -1,8 +1,5 @@
 import mancala_initialization as init
-import mancala_UI as UI
-import pygame
 import random
-import time
 
 stones_positions_list = list()
 
@@ -92,37 +89,6 @@ def generate_computer_move():
         column = random.randint(1,6)
 
     return move_stone(0, column, 0)
-
-def manage_computer_game_mode(opponent_type, turn):
-    '''
-    switches turn depending on whose turn it is
-    manages the computer game mode
-    '''
-
-    if opponent_type == "computer":
-            while turn == 0:
-                UI.draw_board(opponent_type, turn)
-                time.sleep(2)
-                repeat_turn = generate_computer_move()
-
-                if repeat_turn == 0:
-                    turn = (turn + 1) % 2
-                
-                if check_final_state():
-                    display_winner(opponent_type)
-    return turn  
-
-def manage_2_players_mode(turn):
-    '''
-    switches turn between 2 players if the turn does not repeat
-    manages the 2 players game mode
-    '''
-
-    repeat_turn = check_mouse_click(pygame.mouse.get_pos(), turn)
-                   
-    if repeat_turn == 0:
-        turn = (turn + 1) % 2
-    return turn
 
 def get_next_position(row_index, column_index):
     '''
@@ -222,7 +188,7 @@ def display_winner(opponent_type):
     computer who the winner is based on
     the number of points accumulated
     '''
-    
+
     player_1_score = len(stones_positions_list[0][0])
     player_2_score = len(stones_positions_list[1][6])
 

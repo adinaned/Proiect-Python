@@ -22,11 +22,10 @@ acoordingly to the game rules.
 
 Game MODULES:
     mancala_controller.py contains all functions responsible for moving the stones, updating
-the score, checking the final state and the mouse click to be done in a valid cup, etc. It also 
-manages the 2 game modes: computer and 2 players.
+the score, checking the final state and the mouse click to be done in a valid cup, etc.
     mancala_initialization.py contains all global variables for images, each element's
 position and dimension, and also has the initialization functions, which computes the stones' 
 scores' and cups' positions.
     mancala_UI.py contains all functions that load the images from memory and display them on
 the board by using the positions given in mancala_controller.py
-    main.py starts the game, validates the input option.
+    main.py starts the game, validates the input option and manages the 2 game modes: computer and 2 players.
