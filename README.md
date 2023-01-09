@@ -6,7 +6,6 @@ Mancala Rules:
 OBJECTIVE: Collect the most stones in your mancala (mancalas / stores
 are the large cups at each end of the board).
  
-	Each player "owns" a mancala on his side and six cups. 
 Player 1 starts by scooping up all the stones from one of his small cups (players may never start 
 from a mancala or from the opponent's six cups). Player 1 drops one stone into the next cup on the right,
 one stone into the second cup on the right, continuing around the board (counterclockwise) until he has no
