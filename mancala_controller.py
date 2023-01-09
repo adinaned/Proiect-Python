@@ -194,9 +194,9 @@ def display_winner(opponent_type):
 
     if opponent_type == "computer":
         if player_1_score > player_2_score:
-            message = f"Computer: {player_1_score} stones. You 2: {player_2_score} stones.\nComputer won :("
+            message = f"Computer: {player_1_score} stones. You: {player_2_score} stones.\nComputer won :("
         else:
-            message = f"Computer: {player_1_score} stones. You 2: {player_2_score} stones.\nYou won!"
+            message = f"Computer: {player_1_score} stones. You: {player_2_score} stones.\nYou won!"
     else:
         if player_1_score > player_2_score:
             message  = f"Player 1: {player_1_score} stones. Player 2: {player_2_score} stones.\nPlayer 1 won!"
